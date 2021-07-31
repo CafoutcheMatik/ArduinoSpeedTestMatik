@@ -1,0 +1,54 @@
+Ce qui suis est valable pour un Arduino MÉGA2566 rev 3
+
+
+
+
+*_*_*_*_*_*_*_*_*_*_*
+*_* TYPE DE VARIABLE
+
+sizeof() :   bool=1   byte=1   int=2   word=2   long=4   long_long=8   float=4   double=4
+
+         bool   false ou true
+         byte   0 à 255  (forcément non signé)
+         char   La table ASCII Arduino va de 0 à 127 
+          int   -32 768 à 32 767
+ unsigned int   0 à 65 535
+         word   0 à 65 535
+         long   -2 147 483 648 à 2 147 483 647
+unsigned long   0 à 4 294 967 295
+        float   -3.4028235E+38 à +3.4028235E+38
+Pour le MÉGA le type double est identique au float
+les types long long et unsigned long long existent mais ne sont pas analysés dans ce document.
+
+Les débordements donnent de faux résultats. 
+Exemple pour un byte qui est un type non signé 
+byte = 0 puis byte -= 10 donne 246
+
+*_*_*_*_*_*_*_*_*_*_*
+*_* VALEUR CONSTANTE
+
+Par défaut, ces chiffres sont traités comme int.
+
+Malgré tout "long val = 123456789;" dans ce cas val vaut bien 123456789 alors que l'on dépasse les limites de l'int.
+
+Quand on veut affecter une valeur à une variable il faut aussi s'occuper du type et de la base
+binaire     0b01010101
+decimal     255
+hexadécimal 0xFF
+(Octal existe mais non testé)
+
+Pour une affection u précise unsigned, l pour long et f pour float
+pour un unsigned long c'est donc ul
+long val = 123456l
+float val = 123456.789f
+
+
+
+*_*_*_*_*_*_*_*_*_*_*
+*_* Fonctions particulières
+
+val2 = constrain(val1, min, max)
+retourne la valeur val1 limitée aux bornes min max (<min retourne min, >max retourne max)
+
+val2 = map(val1, in_min, in_max, out_min, out_max)
+retourne la valeur val1 mise à l'échelle

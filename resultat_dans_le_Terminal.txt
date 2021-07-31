@@ -1,0 +1,63 @@
+Speed test Matik
+"us" pour micro seconde
+----------
+F_CPU = 16 MHz
+1/F_CPU = 0.0625 us
+
+temps d'exécution d'une boucle vide de 10000 = 11948 soit 1.19 us 
+
+sizeof() :   bool=1   byte=1   int=2   word=2   long=4   long_long=8   float=4   double=4
+les tests numériques se feront pour les types : byte int long float
+
+valeur en us (microseconde
+
+débordement 0-10 :   char=�   byte=246   int=-10   unsigned int=65526   word=65526   long=-10   unsigned long=4294967286   float=-10.00
+int val1 = 3;  int val2 = 2;  float val3;
+val3 = val1 / val1;   donne val3=1.00
+val3 = (float)val1 / (float)val1;   donne val3=1.50
+
+byte ArduinoSpeedTest     + 0.49   - 0.57   * 0.63   / 5.60   % 5.66
+byte 123                  + 0.44   - 0.57   * 0.63   / 5.60   % 5.66
+byte 1                    + 0.44   - 0.57   * 0.63   / 5.60   % 5.66
+byte min_max              + 0.44_0.49   - 0.57_0.57   * 0.63_0.63   / 5.60_5.60   % 5.66_5.66
+
+int ArduinoSpeedTest      + 0.88   - 1.01   * 1.38   / 15.15   % 15.09
+int 123                   + 0.88   - 1.01   * 1.38   / 14.84   % 14.71
+int 1                     + 0.88   - 1.01   * 1.38   / 14.71   % 14.65
+int min_max               + 0.88_0.88   - 1.01_1.01   * 1.38_1.38   / 14.71_15.15   % 14.65_15.09
+
+long ArduinoSpeedTest     + 1.76   - 2.01   * 6.73   / 42.19   % 42.19
+long 123                  + 1.76   - 2.01   * 6.73   / 40.31   % 41.25
+long 1                    + 1.76   - 2.01   * 6.73   / 39.36   % 39.36
+long min_max              + 1.76_1.76   - 2.01_2.01   * 6.73_6.73   / 39.36_42.19   % 39.36_42.19
+
+float ArduinoSpeedTest    + 11.01   - 10.69   * 10.31   / 32.57   /= 81.68
+float 123                 + 10.25   - 10.31   * 9.94   / 31.63   /= 6.49
+float 12                  + 10.25   - 10.31   * 9.94   / 32.01   /= 82.34
+float 1                   + 7.99   - 8.93   * 11.07   / 32.57   /= 6.79
+float min_max             + 7.99_11.01   - 8.93_10.69   * 9.94_11.07   / 31.63_32.57   /= 6.49_82.34
+
+Math sur float (écart important selon valeur)   abs 5.28   sin 137.77   cos 135.38   tan 173.99
+
+opération booléen
+bool                && 0.78   || 0.63
+
+test comparaison   byte 0.65   int 0.94   long 1.57   float 4.72
+
+booléen bit à bit   byte 0.45   int 0.88   long 1.76
+NOT ~ bit à bit   byte 0.32   int 0.63   long 1.26
+décalage gauche <<  1   byte 0.32   int 0.63   long 1.26
+décalage gauche <<  max   byte 0.45   int 0.76   long 1.38
+décalage gauche min_max   byte 0.32_0.45   int 0.63_0.76   long 1.26_1.38
+
+décalage droit >>  1   byte 0.50   int 0.63   long 1.26
+décalage droit >>  max   byte 0.64   int 0.69   long 1.26
+décalage droit min_max   byte 0.50_0.64   int 0.63_0.69   long 1.26_1.26
+
+extraction de byte   lowByte 0.38   highByte 0.57   word 1.32
+
+poids du byte   0=0.77   7=0.75   15=0.76   31=0.76
+
+byte   bitSet 0.32   BitClear 0.32   bitRead 0.75   bitWrite 0.69
+int    bitSet 0.58   BitClear 0.57   bitRead 0.75   bitWrite 0.94
+long   bitSet 1.08   BitClear 1.07   bitRead 1.26   bitWrite 1.57
